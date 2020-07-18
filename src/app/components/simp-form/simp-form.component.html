@@ -1,0 +1,25 @@
+<h2>Simple Form</h2>
+<p>FormGroup directly include FormControl</p>
+<form [formGroup]="userFormGroup" (ngSubmit)="onFormSubmit()">
+    <label>Name: <input formControlName="name"></label>
+    <label>Age: <input formControlName="age"></label>
+    <label class="radio"><input type="radio" value="M" formControlName="sex">Male</label>
+    <label class="radio"><input type="radio" value="F"  formControlName="sex">Female</label>
+    <label>
+        Stage:
+        <select formControlName="stage">
+            <option value="A">Perak</option>
+            <option value="B">Selangor</option>
+            <option value="C">Pahang</option>
+            <option value="D">Kedah</option>
+            <option value="J">Johor</option>
+            <option value="K">Kelantan</option>
+            <option value="M">Melaka</option>
+            <option value="N">Negeri Sembilan</option>
+            <option value="P">Pulau Pinang</option>
+            <option value="SA">Sarawak</option>
+            <option value="SB">Sabah</option>
+        </select>
+        </label>
+        <button type="submit">Submit</button>
+</form>

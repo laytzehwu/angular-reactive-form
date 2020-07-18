@@ -1,0 +1,13 @@
+label {
+    float: none;
+    clear: both;
+    display: block;
+    margin: .5rem;
+    width: 20rem;
+}
+
+label.radio {
+    float: left;
+    clear: none;
+    width: 5rem;
+}
