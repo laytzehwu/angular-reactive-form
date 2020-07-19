@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 
 @Component({
     selector: 'app-grid-a',
@@ -18,9 +18,10 @@ export class GridAComponent implements OnInit {
         this.reloadPayload();
         this.parametersForm = this.fb.group({
             parameters: this.fb.array([]),
-            description: ['', [Validators.required]],
         });
+        // formArray mapps to this.parametersForm.get('parameters')
         const parameters = this.formArray;
+        // Rows mapp to this.payload.container.content.parametersTable.config.values
         this.rows.forEach((row: []) => {
             const group = {};
             row.forEach((cell, colIndex) => {
@@ -30,7 +31,7 @@ export class GridAComponent implements OnInit {
         });
     }
 
-    getColumnType(index: number) {
+    getColumnType(index: number): string {
         const col: any = this.columns[index];
         if (col.type.textField) {
             return col.type.textField.type;
@@ -41,10 +42,7 @@ export class GridAComponent implements OnInit {
         }
     }
 
-    getControls(group: FormGroup | FormArray) {
-        if (group instanceof FormArray) {
-            return group.controls;
-        }
+    getRowControlsIndex(group: FormGroup): Array<string> {
         return Object.keys(group.controls);
     }
 
@@ -54,6 +52,11 @@ export class GridAComponent implements OnInit {
             throw new Error('It is not a dropdown')
         }
         return column['type']['dropDown']['entries'];
+    }
+
+    onFormSubmit() {
+        console.log(this.parametersForm.value);
+        console.log('Invalid', this.parametersForm.invalid);
     }
 
     get formArray(): FormArray {
@@ -77,9 +80,9 @@ export class GridAComponent implements OnInit {
                         componentId: 'parameters-table',
                         config: {
                             values: [
-                                ['Row A', '1', '1998-05-31'],
-                                ['Row B', '2', '2020-06-30'],
-                                ['Row C', '3', '2020-06-15'],
+                                ['Row A', '1', '1998-05-31', 'T'],
+                                ['Row B', '2', '2020-06-30', ''],
+                                ['Row C', '3', '2020-06-15', ''],
                             ],
                             table: {
                                 columns: [
@@ -128,6 +131,64 @@ export class GridAComponent implements OnInit {
                                             }
                                         }
                                     },
+                                    {
+                                        label: 'Deliver Stage',
+                                        type: {
+                                            dropDown: {
+                                                ddGroupName: 'Target',
+                                                entries: [
+                                                    {
+                                                        internalCode: 'A',
+                                                        label: 'Perak',
+                                                    },
+                                                    {
+                                                        internalCode: 'B',
+                                                        label: 'Selangor',
+                                                    },
+                                                    {
+                                                        internalCode: 'C',
+                                                        label: 'Pahang',
+                                                    },
+                                                    {
+                                                        internalCode: 'D',
+                                                        label: 'Kedah',
+                                                    },
+                                                    {
+                                                        internalCode: 'J',
+                                                        label: 'Johor',
+                                                    },
+                                                    {
+                                                        internalCode: 'K',
+                                                        label: 'Kelantan',
+                                                    },
+                                                    {
+                                                        internalCode: 'M',
+                                                        label: 'Melaka',
+                                                    },
+                                                    {
+                                                        internalCode: 'N',
+                                                        label: 'Negeri Sembilan',
+                                                    },
+                                                    {
+                                                        internalCode: 'P',
+                                                        label: 'Pulau Pinang',
+                                                    },
+                                                    {
+                                                        internalCode: 'SA',
+                                                        label: 'Sarawak',
+                                                    },
+                                                    {
+                                                        internalCode: 'SB',
+                                                        label: 'Sabah',
+                                                    },
+                                                    {
+                                                        internalCode: 'T',
+                                                        label: 'Terenganuh',
+                                                    },
+                                                ],
+                                            },
+                                        }
+                                    }
                                 ]
                             }
                         }

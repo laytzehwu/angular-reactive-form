@@ -2,11 +2,10 @@
     <tr>
         <th *ngFor="let column of columns">{{column.label}}</th>
     </tr>
-    <tr *ngFor="let group of getControls(formArray); let rowIndex = index;"
+    <tr *ngFor="let group of formArray.controls; let rowIndex = index;"
         [formGroup]="group"
     >
-        <td *ngFor="let controlIndex of getControls(group);let colIndex = index;">
-            {{getColumnType(colIndex)}}
+        <td *ngFor="let controlIndex of getRowControlsIndex(group);let colIndex = index;">
             <ng-container *ngIf="getColumnType(colIndex) == 'String'">
                 <input
                     type="text"
@@ -23,7 +22,7 @@
                 <select
                     [formControlName]="controlIndex"
                 >
-                    <option>Default</option>
+                    <option value=''>Default</option>
                     <option *ngFor="let opt of getDropdownOptions(colIndex);"
                         [value]="opt.internalCode"
                     >{{opt.label}}</option>
@@ -32,3 +31,7 @@
         </td>
     </tr>
 </table>
+<button type="submit" (click)="onFormSubmit()"
+    [disabled]="parametersForm.invalid"
+    [class.invalid]="parametersForm.invalid"
+>Submit</button>
