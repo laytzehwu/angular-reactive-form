@@ -1,0 +1,19 @@
+table {
+    border: 1px solid #aaa;
+}
+
+th, td {
+    padding: 5px;
+}
+
+.ng-invalid {
+    border-color: #ff0000;
+}
+
+button {
+    margin-top: 1rem;
+}
+
+button.invalid {
+    background-color: #ffaaee;
+}

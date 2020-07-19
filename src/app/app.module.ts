@@ -6,12 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GridAComponent } from './components/grid-a/grid-a.component';
 import { SimpFormComponent } from './components/simp-form/simp-form.component';
+import { GridBComponent } from './components/grid-b/grid-b.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GridAComponent,
-    SimpFormComponent
+    SimpFormComponent,
+    GridBComponent
   ],
   imports: [
     BrowserModule,

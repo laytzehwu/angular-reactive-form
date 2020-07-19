@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import { ParametersService } from '../../services/parameters.service';
 
 @Component({
     selector: 'app-grid-a',
@@ -9,10 +11,12 @@ import { FormArray, FormControl, FormBuilder, FormGroup, Validators, AbstractCon
 export class GridAComponent implements OnInit {
 
     isShow = false;
-    payload: any = {};
+    payload;
     parametersForm: FormGroup;
 
-    constructor(private readonly fb: FormBuilder) { }
+    constructor(
+        private readonly fb: FormBuilder,
+        private readonly parametersService: ParametersService) { }
 
     ngOnInit(): void {
         this.reloadPayload();
@@ -72,132 +76,10 @@ export class GridAComponent implements OnInit {
     }
 
     reloadPayload() {
-        this.payload = {
-            container: {
-                componentId: 'main-container-parameters',
-                content: {
-                    parametersTable: {
-                        componentId: 'parameters-table',
-                        config: {
-                            values: [
-                                ['Row A', '1', '1998-05-31', 'T'],
-                                ['Row B', '2', '2020-06-30', ''],
-                                ['Row C', '3', '2020-06-15', ''],
-                            ],
-                            table: {
-                                columns: [
-                                    {
-                                        label: 'Name',
-                                        type: {
-                                            textField: {
-                                                type: 'String',
-                                                length: 20,
-                                            }
-                                        }
-                                    },
-                                    {
-                                        label: 'Type',
-                                        type: {
-                                            dropDown: {
-                                                ddGroupName: 'Row-Type',
-                                                entries: [
-                                                    {
-                                                        internalCode: '1',
-                                                        label: 'A'
-                                                    },
-                                                    {
-                                                        internalCode: '2',
-                                                        label: 'B'
-                                                    },
-                                                    {
-                                                        internalCode: '3',
-                                                        label: 'C'
-                                                    },
-                                                    {
-                                                        internalCode: '4',
-                                                        label: 'D'
-                                                    },
-                                                ]
-                                            }
-                                        }
-
-                                    },
-                                    {
-                                        label: 'Date',
-                                        type: {
-                                            textField: {
-                                                type: 'date',
-                                                length: 20,
-                                            }
-                                        }
-                                    },
-                                    {
-                                        label: 'Deliver Stage',
-                                        type: {
-                                            dropDown: {
-                                                ddGroupName: 'Target',
-                                                entries: [
-                                                    {
-                                                        internalCode: 'A',
-                                                        label: 'Perak',
-                                                    },
-                                                    {
-                                                        internalCode: 'B',
-                                                        label: 'Selangor',
-                                                    },
-                                                    {
-                                                        internalCode: 'C',
-                                                        label: 'Pahang',
-                                                    },
-                                                    {
-                                                        internalCode: 'D',
-                                                        label: 'Kedah',
-                                                    },
-                                                    {
-                                                        internalCode: 'J',
-                                                        label: 'Johor',
-                                                    },
-                                                    {
-                                                        internalCode: 'K',
-                                                        label: 'Kelantan',
-                                                    },
-                                                    {
-                                                        internalCode: 'M',
-                                                        label: 'Melaka',
-                                                    },
-                                                    {
-                                                        internalCode: 'N',
-                                                        label: 'Negeri Sembilan',
-                                                    },
-                                                    {
-                                                        internalCode: 'P',
-                                                        label: 'Pulau Pinang',
-                                                    },
-                                                    {
-                                                        internalCode: 'SA',
-                                                        label: 'Sarawak',
-                                                    },
-                                                    {
-                                                        internalCode: 'SB',
-                                                        label: 'Sabah',
-                                                    },
-                                                    {
-                                                        internalCode: 'T',
-                                                        label: 'Terenganuh',
-                                                    },
-                                                ],
-                                            },
-                                        }
-                                    }
-                                ]
-                            }
-                        }
-                    }
-                },
-            }
-        };
-        this.isShow = true;
-
+        this.parametersService.getSamplePayload().subscribe(data => {
+            console.log('Received data', data);
+            this.payload = data;
+            this.isShow = true;
+        });
     }
-
 }

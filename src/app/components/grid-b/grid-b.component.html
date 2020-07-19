@@ -1,11 +1,11 @@
 <table *ngIf="isShow">
     <tr>
-        <th *ngFor="let column of columns">{{column.label}}</th>
+        <th *ngFor="let column of payload.container.content.parametersTable.config.table.columns">{{column.label}}</th>
     </tr>
-    <tr *ngFor="let group of formArray.controls; let rowIndex = index;"
-        [formGroup]="group"
+    <tr *ngFor="let rowFormGroup of rowFormGroups.controls; let rowIndex = index;"
+        [formGroup]="rowFormGroup"
     >
-        <td *ngFor="let controlIndex of getRowControlsIndex(group);let colIndex = index;">
+        <td *ngFor="let controlIndex of columnIndex; let colIndex = index;">
             <ng-container *ngIf="getColumnType(colIndex) == 'String'">
                 <input
                     type="text"
