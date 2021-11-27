@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { FlexComponent } from './components/flex/flex.component';
 
 import { GridAComponent } from './components/grid-a/grid-a.component';
 import { GridBComponent } from './components/grid-b/grid-b.component';
@@ -17,6 +18,10 @@ const routes: Routes = [
     {
         path: 'simple-form',
         component: SimpFormComponent,
+    },
+    {
+        path: 'flex',
+        component: FlexComponent,
     },
 ];
 

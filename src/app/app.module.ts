@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { GridAComponent } from './components/grid-a/grid-a.component';
 import { SimpFormComponent } from './components/simp-form/simp-form.component';
 import { GridBComponent } from './components/grid-b/grid-b.component';
+import { FlexComponent } from './components/flex/flex.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GridAComponent,
     SimpFormComponent,
-    GridBComponent
+    GridBComponent,
+    FlexComponent
   ],
   imports: [
     BrowserModule,

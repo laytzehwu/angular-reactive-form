@@ -1,0 +1,367 @@
+<h1>Flexbox study</h1>
+<section>
+    <div class="case define-item-width">
+        <div>
+            <h2>Item 1</h2>
+            <p>width: 12rem</p>
+        </div>
+        <div>
+            <h2>Item 2</h2>
+            <p>width: 16rem</p>
+        </div>
+        <div>
+            <h2>Item 3</h2>
+            <p>width: 20rem</p>
+        </div>
+    </div>
+    <div>
+        <h2>Default</h2>
+        <p>The container has 3 items which have different widh.</p>
+    </div>
+</section>
+
+<section>
+    <div id="simple-flexbox" class="case define-item-width">
+        <div>
+            <h2>Item 1</h2>
+            <p>width: 12rem</p>
+        </div>
+        <div>
+            <h2>Item 2</h2>
+            <p>width: 16rem</p>
+        </div>
+        <div>
+            <h2>Item 3</h2>
+            <p>width: 20rem</p>
+        </div>
+        <div><h2>Item 4</h2></div>
+        <div><h2>Item 5</h2></div>
+        <div><h2>Item 6</h2></div>
+        <div><h2>Item 7</h2></div>
+        <div><h2>Item 8</h2></div>
+        <div><h2>Item 9</h2></div>
+        <div><h2>Item 10</h2></div>
+    </div>
+    <div>
+        <h2>Simple Flex</h2>
+        <p>Add <strong>display: <u>flex</u></strong> with the comtainer</p>
+        <p>Compare to default, its items line into 1 row</p>
+        <p>All the items became same height and follow the highest item</p>
+        <p>It does not adjust the width of items which already specified (item 1 ~ 3) </p>
+        <p>Let's look at another scenario which has no width specified</p>
+    </div>
+    <div id="simple-flexbox-2" class="case">
+        <div>
+            <h2>Item 1</h2>
+        </div>
+        <div>
+            <h2>Item 2</h2>
+        </div>
+        <div>
+            <h2>Item 3</h2>
+        </div>
+        <div><h2>Item 4</h2></div>
+        <div><h2>Item 5</h2></div>
+        <div><h2>Item 6</h2></div>
+        <div><h2>Item 7</h2></div>
+        <div><h2>Item 8</h2></div>
+        <div><h2>Item 9</h2></div>
+        <div><h2>Item 10</h2></div>
+    </div>
+    <div>
+        <p>It adjust item's width when the container is not wide enought. The wider items will be reduced its width first.</p>
+        <p>When the container is narrow enough all the item became same width</p>
+        <p>Some items were out from container when it is insufficient</p>
+    </div>
+</section>
+
+<section>
+    <div>
+        <h2>justify-content</h2>
+        <p>Items can be align by setting justify-container.</p>
+    </div>
+    <div id="justify-content-flex-start" class="case define-item-width">
+        <div>
+            <h2>Item 1</h2>
+            <p>width: 12rem</p>
+        </div>
+        <div>
+            <h2>Item 2</h2>
+            <p>width: 16rem</p>
+        </div>
+        <div>
+            <h2>Item 3</h2>
+            <p>width: 20rem</p>
+            <p>We start from left. See below setting</p>
+            <p>justify-content: <strong>flex-start</strong></p>
+        </div>
+        <div><h2>Item 4</h2></div>
+        <div><h2>Item 5</h2></div>
+    </div>
+    <div id="justify-content-flex-end" class="case define-item-width">
+        <div>
+            <h2>Item 1</h2>
+            <p>width: 12rem</p>
+        </div>
+        <div>
+            <h2>Item 2</h2>
+            <p>width: 16rem</p>
+        </div>
+        <div>
+            <h2>Item 3</h2>
+            <p>width: 20rem</p>
+            <p>We align to the right. See below setting</p>
+            <p>justify-content: <strong>flex-end</strong></p>
+        </div>
+        <div><h2>Item 4</h2></div>
+        <div><h2>Item 5</h2></div>
+    </div>
+    <div id="justify-content-center" class="case define-item-width">
+        <div>
+            <h2>Item 1</h2>
+            <p>width: 12rem</p>
+        </div>
+        <div>
+            <h2>Item 2</h2>
+            <p>width: 16rem</p>
+        </div>
+        <div>
+            <h2>Item 3</h2>
+            <p>width: 20rem</p>
+            <p>We are in the center. See below setting</p>
+            <p>justify-content: <strong>center</strong></p>
+        </div>
+        <div><h2>Item 4</h2></div>
+        <div><h2>Item 5</h2></div>
+    </div>
+    <div id="justify-content-space-between" class="case define-item-width">
+        <div>
+            <h2>Item 1</h2>
+            <p>width: 12rem</p>
+        </div>
+        <div>
+            <h2>Item 2</h2>
+            <p>width: 16rem</p>
+        </div>
+        <div>
+            <h2>Item 3</h2>
+            <p>width: 20rem</p>
+            <p>We occupy full row. See below setting</p>
+            <p>justify-content: <strong>space-between</strong></p>
+        </div>
+        <div><h2>Item 4</h2></div>
+        <div><h2>Item 5</h2></div>
+    </div>
+    <div id="justify-content-space-around" class="case define-item-width">
+        <div>
+            <h2>Item 1</h2>
+            <p>width: 12rem</p>
+        </div>
+        <div>
+            <h2>Item 2</h2>
+            <p>width: 16rem</p>
+        </div>
+        <div>
+            <h2>Item 3</h2>
+            <p>width: 20rem</p>
+            <p>We are having same space to each other. See below setting</p>
+            <p>justify-content: <strong>space-arround</strong></p>
+        </div>
+        <div><h2>Item 4</h2></div>
+        <div><h2>Item 5</h2></div>
+    </div>
+</section>
+
+<section>
+    <div>
+        <h2>Keeps items height</h2>
+        <p>Items' height were strech by default. To keep items' height, we can set <strong>align-item: flex-start.</strong></p>
+    </div>
+    <div id="justify-content-item-flex-start" class="case define-item-width">
+        <div>
+            <h2>Item 1</h2>
+            <p>width: 12rem</p>
+        </div>
+        <div>
+            <h2>Item 2</h2>
+            <p>width: 16rem</p>
+        </div>
+        <div>
+            <h2>Item 3</h2>
+            <p>width: 20rem</p>
+            <p>We are having same space to each other. See below setting</p>
+            <p>justify-content: <strong>space-arround</strong></p>
+        </div>
+        <div>
+            <h2>Item 4</h2>
+            <p>We keep our height by set <strong>align-item: flex-start.</strong></p>
+        </div>
+        <div>
+            <h2>Item 5</h2>
+            <p>We are sticking to top.</p>
+        </div>
+    </div>
+    <div id="justify-content-item-flex-end" class="case define-item-width">
+        <div>
+            <h2>Item 1</h2>
+            <p>width: 12rem</p>
+        </div>
+        <div>
+            <h2>Item 2</h2>
+            <p>width: 16rem</p>
+        </div>
+        <div>
+            <h2>Item 3</h2>
+            <p>width: 20rem</p>
+            <p>We are having same space to each other. See below setting</p>
+            <p>justify-content: <strong>space-arround</strong></p>
+        </div>
+        <div>
+            <h2>Item 4</h2>
+            <p>We keep our height by set <strong>align-item: flex-end.</strong></p>
+        </div>
+        <div>
+            <h2>Item 5</h2>
+            <p>We are standing on the ground.</p>
+        </div>
+    </div>
+    <div id="justify-content-item-in-middle" class="case define-item-width">
+        <div>
+            <h2>Item 1</h2>
+            <p>width: 12rem</p>
+        </div>
+        <div>
+            <h2>Item 2</h2>
+            <p>width: 16rem</p>
+        </div>
+        <div>
+            <h2>Item 3</h2>
+            <p>width: 20rem</p>
+            <p>We are having same space to each other. See below setting</p>
+            <p>justify-content: <strong>space-arround</strong></p>
+        </div>
+        <div>
+            <h2>Item 4</h2>
+            <p>We keep our height by set <strong>align-item: center.</strong></p>
+        </div>
+        <div>
+            <h2>Item 5</h2>
+            <p>We align to middle.</p>
+        </div>
+    </div>
+    <div id="justify-content-multiple-row" class="case define-item-width">
+        <div>
+            <h2>Item 1</h2>
+            <p>width: 12rem</p>
+        </div>
+        <div>
+            <h2>Item 2</h2>
+            <p>width: 16rem</p>
+        </div>
+        <div>
+            <h2>Item 3</h2>
+            <p>width: 20rem</p>
+            <p>Our last row is aligned to center:</p>
+            <p>justify-content: <strong>center</strong></p>
+        </div>
+        <div>
+            <h2>Item 4</h2>
+            <p>We keep our height by set <strong>align-item: flex-end.</strong></p>
+        </div>
+        <div>
+            <h2>Item 5</h2>
+            <p>We are standing on the ground.</p>
+        </div>
+        <div>
+            <h2>Item 6</h2>
+            <p>We wish can have multiple row</p>
+        </div>
+        <div>
+            <h2>Item 7</h2>
+            <p>It requires us to set flex-wrap: <u>wrap</u></p>
+            <p>So that, we can keep our width and move to other rows.</p>
+        </div>
+        <div>
+            <h2>Item 8</h2>
+            <p>We can <u>vertically align</u> to <strong>middle</strong> when the container is taller.</p>
+            <p><strong>align-content: center</strong></p>
+        </div>
+        <div><h2>Item 9</h2></div>
+        <div><h2>Item 10</h2></div>
+    </div>
+</section>
+
+<section>
+    <div>
+        <h2>Main Axis and Cross Axis</h2>
+        <p>Flex align its items according to Main Axis, by default is horizonal. And the Cross Axis is vertical.</p>
+        <P>They can be changed by set flex-direction, the default direction is <strong>row</strong>.</P>
+        <p> The items are aligned verticaly when <strong>flex-direction: <u>column</u></strong></p>
+    </div>
+    <div id="flex-column" class="case define-item-width">
+        <div>
+            <h2>Item 1</h2>
+            <p>width: 12rem</p>
+        </div>
+        <div>
+            <h2>Item 2</h2>
+            <p>width: 16rem</p>
+        </div>
+        <div>
+            <h2>Item 3</h2>
+            <p>width: 20rem</p>
+            <p><strong>justify-content: flex-end</strong>, we all together stand on ground</p>
+        </div>
+        <div>
+            <h2>Item 4</h2>
+            <h3>flex-wrap: wrap</h3>
+            <p>We have 3 columns</p>
+        </div>
+        <div><h2>Item 5</h2></div>
+        <div><h2>Item 6</h2></div>
+        <div><h2>Item 7</h2></div>
+        <div><h2>Item 8</h2></div>
+        <div>
+            <h2>Item 9</h2>
+            <p><strong>align-content: space-between</strong> make us full width</p>
+            <p>If you want to align right set <strong>align-content: flex-end</strong></p>
+        </div>
+        <div><h2>Item 10</h2></div>
+    </div>
+</section>
+
+<section>
+    <div id="flex-shrink" class="case">
+        <div>
+            <h2>Item 1</h2>
+            <p>All the items are same width by default flexbox</p>
+        </div>
+        <div>
+            <h2>Item 2</h2>
+            <p>Items' width has been trim by flex.</p>
+        </div>
+        <div><h2>Item 3</h2></div>
+        <div>
+            <h2>Item 4</h2>
+            <p>I can keep my width by setting <strong>flex-shrink</strong> to 0.</p>
+            <p>Actually all the item has width of 20rem.</p>
+        </div>
+        <div><h2>Item 5</h2></div>
+        <div><h2>Item 6</h2></div>
+        <div><h2>Item 7</h2></div>
+    </div>
+</section>
+
+<section>
+    <div id="flex-grow" class="case">
+        <div>
+            <h2>Item 1</h2>
+            <p>Items are not fully occupy the space</p>
+        </div>
+        <div><h2>Item 2</h2></div>
+        <div>
+            <h2>Item 3</h2>
+            <p>I occupy the remaining space by setting flex-grow to 1</p>
+        </div>
+    </div>
+</section>
