@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, ExtraOptions } from '@angular/router';
 import { FlexComponent } from './components/flex/flex.component';
 
 import { GridAComponent } from './components/grid-a/grid-a.component';
 import { GridBComponent } from './components/grid-b/grid-b.component';
 import { SimpFormComponent } from './components/simp-form/simp-form.component';
-
+const routeOption: ExtraOptions = {
+    useHash: false,
+    anchorScrolling: 'enabled',
+}
 const routes: Routes = [
     {
         path: 'grid-a',
@@ -26,7 +29,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, routeOption)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

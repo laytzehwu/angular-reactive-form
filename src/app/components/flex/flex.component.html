@@ -1,6 +1,19 @@
-<h1>Flexbox study</h1>
+<header>
+    <nav>
+        <h1>Flexbox study</h1>
+        <ul>
+            <li><a routerLink="./" fragment="default">Default setting - without display: flex</a></li>
+            <li><a routerLink="./" fragment="simple-flexbox">Simple Flex</a></li>
+            <li><a routerLink="./" fragment="justify-content">Justify Content</a></li>
+            <li><a routerLink="./" fragment="keep-item-height">Keep items' height</a></li>
+            <li><a routerLink="./" fragment="justify-content-item-flex-end">Item stand on the ground</a></li>
+            <li><a routerLink="./" fragment="justify-content-multiple-row">Item stand on same lavel but not really on the ground</a></li>
+            <li><a routerLink="./" fragment="justify-content-item-in-middle">Vertical align middle</a></li>
+        </ul>
+    </nav>
+</header>
 <section>
-    <div class="case define-item-width">
+    <div id="default" #default class="case define-item-width">
         <div>
             <h2>Item 1</h2>
             <p>width: 12rem</p>
@@ -17,6 +30,82 @@
     <div>
         <h2>Default</h2>
         <p>The container has 3 items which have different widh.</p>
+        <div>
+            <h2>Change to flex related CSS properties</h2>
+            <ol>
+                <li>
+                    <label>
+                        <span>Display </span>
+                        <select #display (change)="onChangeDisplay(display.value)">
+                            <option value="block" selected>block</option>
+                            <option value="flex">flex</option>
+                        </select>
+                        <span> try to select <u>flex</u> it became <a routerLink="./" fragment="simple-flexbox">Simple Flex</a></span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <span>Justify Content </span>
+                        <select #justifyContent (change)="onChangeJustifyContent(justifyContent.value)">
+                            <option value="" selected>None</option>
+                            <option value="flex-start">flex-start</option>
+                            <option value="flex-end">flex-end</option>
+                            <option value="center">center</option>
+                            <option value="space-between">space-between</option>
+                            <option value="space-around">space-around</option>
+                        </select>
+                        <span>. It is aligning the space of the items. See further detail at <a routerLink="./" fragment="justify-content">Justify Content</a></span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <span>Flex direction </span>
+                        <select #flexDirection (change)="onChangeFlexDirection(flexDirection.value)">
+                            <option value="" selected>None</option>
+                            <option value="row">row</option>
+                            <option value="column">column</option>
+                        </select>
+                    </label>
+                    <p>
+                        You might notice that, Justify content is not working after flex direction change to column.
+                        It is because of no limit of height with the container.
+                    </p>
+                    <p>
+                        You may
+                        <label><input #limitHeight type="checkbox" (click)="onLimitHeight(limitHeight.checked)"> limit the height</label>
+                        to <input #height type="number" value="64" (change)="onChangeHeight(height.value)" disabled> rem
+                    </p>
+                    <p>Note: It will go wrong after you reduce the height to 57rem. Let's try flex-wrap</p>
+                </li>
+                <li>
+                    <label>
+                        <span>Flex wrap </span>
+                        <select #flexWrap (change)="onChangeFlexWrap(flexWrap.value)">
+                            <option value="" selected>None</option>
+                            <option value="nowrap">nowrap</option>
+                            <option value="wrap">wrap</option>
+                        </select>
+                        <span>. It became better after you change it to <strong>wrap</strong>. Right ?</span>
+                    </label>
+                    <p>After you have changed flex direction to <strong>column</strong> and then <strong>wrap</strong> items into 2 column, you may find it is having too much space between columns.</p>
+                    <p>It is caused by the width. flex-direction: <u>column</u> is highly depend on the container width.</p>
+                </li>
+                <li>
+                    <label>
+                        <span>align-items</span>
+                        <select #alignItem (change)="onChangeAlignItem(alignItem.value)">
+                            <option value="" selected>None</option>
+                            <option value="flex-start">flex-start</option>
+                            <option value="flex-end">flex-end</option>
+                            <option value="center">center</option>
+                            <option value="space-between">space-between</option>
+                            <option value="space-around">space-around</option>
+                        </select>
+                        <span> offer alignment for another axis different to <a routerLink="./" fragment="justify-content">Justify Content</a>.</span>
+                    </label>
+                </li>
+            </ol>
+        </div>
     </div>
 </section>
 
@@ -77,7 +166,7 @@
 
 <section>
     <div>
-        <h2>justify-content</h2>
+        <h2><a name="justify-content">justify-content</a></h2>
         <p>Items can be align by setting justify-container.</p>
     </div>
     <div id="justify-content-flex-start" class="case define-item-width">
@@ -174,7 +263,7 @@
 
 <section>
     <div>
-        <h2>Keeps items height</h2>
+        <h2><a name="keep-item-height">Keeps items height</a></h2>
         <p>Items' height were strech by default. To keep items' height, we can set <strong>align-item: flex-start.</strong></p>
     </div>
     <div id="justify-content-item-flex-start" class="case define-item-width">
@@ -200,6 +289,11 @@
             <h2>Item 5</h2>
             <p>We are sticking to top.</p>
         </div>
+    </div>
+    <div>
+        <p>Above items are stick to top, because the <a routerLink="./" fragment="axis">main axis</a> is horizontal.</p>
+        <p>The align-item align <a routerLink="./" fragment="axis">cross axis</a>, above section set <strong>flex-direction</strong> to row by default. So that align-item is adjusting vertically. <strong>flex-start</strong> mean top.</p>
+
     </div>
     <div id="justify-content-item-flex-end" class="case define-item-width">
         <div>
@@ -293,7 +387,7 @@
 
 <section>
     <div>
-        <h2>Main Axis and Cross Axis</h2>
+        <h2><a name="axis">Main Axis and Cross Axis</a></h2>
         <p>Flex align its items according to Main Axis, by default is horizonal. And the Cross Axis is vertical.</p>
         <P>They can be changed by set flex-direction, the default direction is <strong>row</strong>.</P>
         <p> The items are aligned verticaly when <strong>flex-direction: <u>column</u></strong></p>
